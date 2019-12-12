@@ -2,10 +2,9 @@ package pongo2
 
 import (
 	"bytes"
+	"fmt"
 	"io"
 	"strings"
-
-	"github.com/juju/errors"
 )
 
 type TemplateWriter interface {
@@ -97,7 +96,6 @@ func newTemplate(set *TemplateSet, name string, isTplString bool, tpl []byte) (*
 
 func (tpl *Template) newContextForExecution(context Context) (*Template, *ExecutionContext, error) {
 	if tpl.Options.TrimBlocks || tpl.Options.LStripBlocks {
-		// Issue #94 https://github.com/flosch/pongo2/issues/94
 		// If an application configures pongo2 template to trim_blocks,
 		// the first newline after a template tag is removed automatically (like in PHP).
 		prev := &Token{
@@ -151,7 +149,7 @@ func (tpl *Template) newContextForExecution(context Context) (*Template, *Execut
 					return parent, nil, &Error{
 						Filename:  tpl.name,
 						Sender:    "execution",
-						OrigError: errors.Errorf("context key name '%s' clashes with macro '%s'", k, k),
+						OrigError: fmt.Errorf("context key name '%s' clashes with macro '%s'", k, k),
 					}
 				}
 			}

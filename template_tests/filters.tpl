@@ -241,38 +241,38 @@ truncatewords
 {{ simple.chinese_hello_world|truncatewords:2 }}
 
 urlize
-{{ "http://www.florian-schlachter.de"|urlize|safe }}
-{{ "www.florian-schlachter.de"|urlize|safe }}
-{{ "florian-schlachter.de"|urlize|safe }}
+{{ "http://www.iris-go.com"|urlize|safe }}
+{{ "www.iris-go.com"|urlize|safe }}
+{{ "iris-go.com"|urlize|safe }}
 {% filter urlize:true|safe %}
 Please mail me at demo@example.com or visit mit on:
-- lorem ipsum github.com/flosch/pongo2 lorem ipsum
-- lorem ipsum http://www.florian-schlachter.de lorem ipsum
-- lorem ipsum https://www.florian-schlachter.de lorem ipsum
-- lorem ipsum https://www.florian-schlachter.de lorem ipsum
-- lorem ipsum www.florian-schlachter.de lorem ipsum
-- lorem ipsum www.florian-schlachter.de/test="test" lorem ipsum
+- lorem ipsum github.com/iris-contrib/pongo2 lorem ipsum
+- lorem ipsum http://www.iris-go.com lorem ipsum
+- lorem ipsum https://www.iris-go.com lorem ipsum
+- lorem ipsum https://www.iris-go.com lorem ipsum
+- lorem ipsum www.iris-go.com lorem ipsum
+- lorem ipsum www.iris-go.com/test="test" lorem ipsum
 {% endfilter %}
 --
 {% filter urlize:false|safe %}
 Please mail me at demo@example.com or visit mit on:
-- lorem ipsum github.com/flosch/pongo2 lorem ipsum
-- lorem ipsum http://www.florian-schlachter.de lorem ipsum
-- lorem ipsum https://www.florian-schlachter.de lorem ipsum
-- lorem ipsum https://www.florian-schlachter.de lorem ipsum
-- lorem ipsum www.florian-schlachter.de lorem ipsum
-- lorem ipsum www.florian-schlachter.de/test="test" lorem ipsum
+- lorem ipsum github.com/iris-contrib/pongo2 lorem ipsum
+- lorem ipsum http://www.iris-go.com lorem ipsum
+- lorem ipsum https://www.iris-go.com lorem ipsum
+- lorem ipsum https://www.iris-go.com lorem ipsum
+- lorem ipsum www.iris-go.com lorem ipsum
+- lorem ipsum www.iris-go.com/test="test" lorem ipsum
 {% endfilter %}
 
 urlizetrunc
 {% filter urlizetrunc:15|safe %}
 Please mail me at demo@example.com or visit mit on:
-- lorem ipsum github.com/flosch/pongo2 lorem ipsum
-- lorem ipsum http://www.florian-schlachter.de lorem ipsum
-- lorem ipsum https://www.florian-schlachter.de lorem ipsum
-- lorem ipsum https://www.florian-schlachter.de lorem ipsum
-- lorem ipsum www.florian-schlachter.de lorem ipsum
-- lorem ipsum www.florian-schlachter.de/test="test" lorem ipsum
+- lorem ipsum github.com/iris-contrib/pongo2 lorem ipsum
+- lorem ipsum http://www.iris-go.com lorem ipsum
+- lorem ipsum https://www.iris-go.com lorem ipsum
+- lorem ipsum https://www.iris-go.com lorem ipsum
+- lorem ipsum www.iris-go.com lorem ipsum
+- lorem ipsum www.iris-go.com/test="test" lorem ipsum
 {% endfilter %}
 
 escapejs

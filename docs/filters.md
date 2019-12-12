@@ -65,4 +65,4 @@ Implemented filters so far which needs documentation:
 * timeuntil*
 * naturaltime*
 
-Filters marked with * are available through [pongo2-addons](https://github.com/flosch/pongo2-addons).
+Filters marked with * are available through [pongo2-addons](https://github.com/iris-contrib/pongo2-addons).

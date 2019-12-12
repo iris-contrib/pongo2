@@ -1,11 +1,10 @@
 package pongo2
 
 import (
+	"errors"
 	"fmt"
 	"strings"
 	"unicode/utf8"
-
-	"github.com/juju/errors"
 )
 
 const (
@@ -74,7 +73,7 @@ type lexer struct {
 func (t *Token) String() string {
 	val := t.Val
 	if len(val) > 1000 {
-		val = fmt.Sprintf("%s...%s", val[:10], val[len(val)-5:len(val)])
+		val = fmt.Sprintf("%s...%s", val[:10], val[len(val)-5:])
 	}
 
 	typ := ""
@@ -381,7 +380,6 @@ func (l *lexer) stateNumber() lexerStateFn {
 	l.acceptRun(tokenDigits)
 	if l.accept(tokenIdentifierCharsWithDigits) {
 		// This seems to be an identifier starting with a number.
-		// See https://github.com/flosch/pongo2/issues/151
 		return l.stateIdentifier()
 	}
 	/*

@@ -1,9 +1,8 @@
 package pongo2
 
 import (
+	"fmt"
 	"regexp"
-
-	"github.com/juju/errors"
 )
 
 var reIdentifiers = regexp.MustCompile("^[a-zA-Z0-9_]+$")
@@ -32,7 +31,7 @@ func (c Context) checkForValidIdentifiers() *Error {
 		if !reIdentifiers.MatchString(k) {
 			return &Error{
 				Sender:    "checkForValidIdentifiers",
-				OrigError: errors.Errorf("context-key '%s' (value: '%+v') is not a valid identifier", k, v),
+				OrigError: fmt.Errorf("context-key '%s' (value: '%+v') is not a valid identifier", k, v),
 			}
 		}
 	}
@@ -107,7 +106,7 @@ func NewChildExecutionContext(parent *ExecutionContext) *ExecutionContext {
 }
 
 func (ctx *ExecutionContext) Error(msg string, token *Token) *Error {
-	return ctx.OrigError(errors.New(msg), token)
+	return ctx.OrigError(fmt.Errorf(msg), token)
 }
 
 func (ctx *ExecutionContext) OrigError(err error, token *Token) *Error {

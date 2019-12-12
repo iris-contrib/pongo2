@@ -1,6 +1,6 @@
 package pongo2
 
-/* Filters that are provided through github.com/flosch/pongo2-addons:
+/* Filters that are provided through github.com/iris-contrib/pongo2-addons:
    ------------------------------------------------------------------
 
    filesizeformat
@@ -35,8 +35,6 @@ import (
 	"strings"
 	"time"
 	"unicode/utf8"
-
-	"github.com/juju/errors"
 )
 
 func init() {
@@ -556,7 +554,7 @@ func filterDate(in *Value, param *Value) (*Value, *Error) {
 	if !isTime {
 		return nil, &Error{
 			Sender:    "filter:date",
-			OrigError: errors.New("filter input argument must be of type 'time.Time'"),
+			OrigError: fmt.Errorf("filter input argument must be of type 'time.Time'"),
 		}
 	}
 	return AsValue(t.Format(param.String())), nil
@@ -727,7 +725,7 @@ func filterUrlizetrunc(in *Value, param *Value) (*Value, *Error) {
 	if err != nil {
 		return nil, &Error{
 			Sender:    "filter:urlizetrunc",
-			OrigError: errors.New("you cannot pass more than 2 arguments to filter 'pluralize'"),
+			OrigError: fmt.Errorf("you cannot pass more than 2 arguments to filter 'pluralize'"),
 		}
 	}
 	return AsValue(s), nil
@@ -772,7 +770,7 @@ func filterPluralize(in *Value, param *Value) (*Value, *Error) {
 			if len(endings) > 2 {
 				return nil, &Error{
 					Sender:    "filter:pluralize",
-					OrigError: errors.New("you cannot pass more than 2 arguments to filter 'pluralize'"),
+					OrigError: fmt.Errorf("you cannot pass more than 2 arguments to filter 'pluralize'"),
 				}
 			}
 			if len(endings) == 1 {
@@ -798,7 +796,7 @@ func filterPluralize(in *Value, param *Value) (*Value, *Error) {
 	}
 	return nil, &Error{
 		Sender:    "filter:pluralize",
-		OrigError: errors.New("filter 'pluralize' does only work on numbers"),
+		OrigError: fmt.Errorf("filter 'pluralize' does only work on numbers"),
 	}
 }
 
@@ -832,7 +830,7 @@ func filterSlice(in *Value, param *Value) (*Value, *Error) {
 	if len(comp) != 2 {
 		return nil, &Error{
 			Sender:    "filter:slice",
-			OrigError: errors.New("Slice string must have the format 'from:to' [from/to can be omitted, but the ':' is required]"),
+			OrigError: fmt.Errorf("Slice string must have the format 'from:to' [from/to can be omitted, but the ':' is required]"),
 		}
 	}
 
@@ -894,13 +892,13 @@ func filterYesno(in *Value, param *Value) (*Value, *Error) {
 		if len(customChoices) > 3 {
 			return nil, &Error{
 				Sender:    "filter:yesno",
-				OrigError: errors.Errorf("You cannot pass more than 3 options to the 'yesno'-filter (got: '%s').", paramString),
+				OrigError: fmt.Errorf("You cannot pass more than 3 options to the 'yesno'-filter (got: '%s').", paramString),
 			}
 		}
 		if len(customChoices) < 2 {
 			return nil, &Error{
 				Sender:    "filter:yesno",
-				OrigError: errors.Errorf("You must pass either no or at least 2 arguments to the 'yesno'-filter (got: '%s').", paramString),
+				OrigError: fmt.Errorf("You must pass either no or at least 2 arguments to the 'yesno'-filter (got: '%s').", paramString),
 			}
 		}
 

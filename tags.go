@@ -19,11 +19,7 @@ package pongo2
    url (reason: web-framework specific)
 */
 
-import (
-	"fmt"
-
-	"github.com/juju/errors"
-)
+import "fmt"
 
 type INodeTag interface {
 	INode
@@ -59,12 +55,12 @@ func init() {
 // function in the tag's init() function:
 // http://golang.org/doc/effective_go.html#init
 //
-// See http://www.florian-schlachter.de/post/pongo2/ for more about
+// See http://www.iris-go.com/post/pongo2/ for more about
 // writing filters and tags.
 func RegisterTag(name string, parserFn TagParser) error {
 	_, existing := tags[name]
 	if existing {
-		return errors.Errorf("tag with name '%s' is already registered", name)
+		return fmt.Errorf("tag with name '%s' is already registered", name)
 	}
 	tags[name] = &tag{
 		name:   name,
@@ -78,7 +74,7 @@ func RegisterTag(name string, parserFn TagParser) error {
 func ReplaceTag(name string, parserFn TagParser) error {
 	_, existing := tags[name]
 	if !existing {
-		return errors.Errorf("tag with name '%s' does not exist (therefore cannot be overridden)", name)
+		return fmt.Errorf("tag with name '%s' does not exist (therefore cannot be overridden)", name)
 	}
 	tags[name] = &tag{
 		name:   name,
